@@ -1,0 +1,25 @@
+
+
+
+
+
+
+event.target.dateset.key
+
+
+enregistrer key.event
+
+
+une fois que div et animation
+sur key up on remove playing de la div
+evement sur toutes les touches donc faut selectionner celles du pad
+celle pas du pad =  null donc si pas key pas ok 
+if (!key){return;} = si on trouve pas la touche on continue pas
+
+puis on ajoute audio
+
+il faut fix event Keydown pour pas que l'evenmeent se repete 
+et que le son ne soit joué qu'une fois
+
+
+Mettre sous play et record en span les images correspondantes
