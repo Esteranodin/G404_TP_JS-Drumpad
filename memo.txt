@@ -1,28 +1,13 @@
- Pour valider cette étape : réussir à console.log l'état du record (true quand la div est visuellement enfoncée, et false lorsque l'on appuie une nouvelle fois dessus et qu'elle revient à son état initial).
-
-
-
-timeline avec temps qui passe et des evenmenent
-enregistrer evnement et le temps
-ligne du temps + ligne des évènements
+timeline avec temps qui passe +
+timeline des evenmenent
+enregistrer les deux
 
 ==> les events et quand ça se produit
 
-
-
-
 event.target.dateset.key
 
-
-enregistrer key.event
-
-tableau des objets ou dedans  chaqeu objet à un temos et une
-
-
+tableau des objets ou dedans chaque objet à un temps
 
 
 
 Mettre sous play et record en span les images correspondantes
-
-
-variable dispo dans tout le code pour utilisation dans toutes les fonctions pour si tru = enregistre 
