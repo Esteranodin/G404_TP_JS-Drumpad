@@ -1,17 +1,3 @@
-
-
-==> les events et quand ça se produit
-
-event.target.dateset.key
-
-tableau des objets ou dedans chaque objet à un temps
-
-
-
+TO DO :
+Modifier CSS pour le rendre plus fancy
 Mettre sous play et record en span les images correspondantes
-
-
-création moule (classe objet) qu'on remplit avec classe prommesse (qui contient les infos deja préparé en amont) comme pate a gateau 
-==> new verre = new sable
-
-Pour play ==> creation d'un intervalle pour lancer evenement et d'un evenement key up
