@@ -4,7 +4,6 @@ document.addEventListener('keyup', handleStopAudioAndAnimation);
 let recording = false;
 let soundsRecording = [];
 let startTime;
-let keyPlay = document.querySelector('#play');
 
 function handleDrumPlay(event) {
     if (event.repeat) return;
@@ -26,31 +25,33 @@ function handleDrumPlay(event) {
 
         if (event.keyCode === 32) {
             triggerPlay();
+            setTimeout(() => {
+                keyWhich.classList.toggle('playing');
+            }, Date.now() - startTime);
         };
+    return;
+};
 
-        return;
+if (keyWhichAudio) {
+
+    keyWhichAudio.currentTime = 0;
+    keyWhichAudio.play();
+
+    if (recording === true) {
+        record(event);
     };
-
-    if (keyWhichAudio) {
-
-        keyWhichAudio.currentTime = 0;
-        keyWhichAudio.play();
-
-        if (recording === true) {
-            record(event);
-        };
-    };
+};
 };
 
 function handleStopAudioAndAnimation(event) {
-    let keySelect = document.querySelector(`.key[data-key="${event.keyCode}"]`);
+    let keyWhich = document.querySelector(`.key[data-key="${event.keyCode}"]`);
 
-    if (!keySelect) return;
+    if (!keyWhich) return;
 
     let keyWhichAudio = document.querySelector('audio[data-key="' + event.keyCode + '"]');
 
-    if (keySelect && keyWhichAudio) {
-        keySelect.classList.toggle('playing');
+    if (keyWhich && keyWhichAudio) {
+        keyWhich.classList.toggle('playing');
     };
 };
 
@@ -75,21 +76,14 @@ function record(event) {
 function triggerPlay() {
     soundsRecording.forEach((indexKey) => {
         setTimeout(() => {
-            const emulNewKeyDownEvent = new KeyboardEvent("keydown", { keyCode: indexKey.keyCode});
+            const emulNewKeyDownEvent = new KeyboardEvent("keydown", { keyCode: indexKey.keyCode });
             document.dispatchEvent(emulNewKeyDownEvent);
-           setTimeout(() => {
-            const emulNewKeyUpEvent = new KeyboardEvent("keyup", {keyCode: indexKey.keyCode});
-            document.dispatchEvent(emulNewKeyUpEvent);
-        }, 200); 
-    }, indexKey.timeCode);       
+            setTimeout(() => {
+                const emulNewKeyUpEvent = new KeyboardEvent("keyup", { keyCode: indexKey.keyCode });
+                document.dispatchEvent(emulNewKeyUpEvent);
+            }, 200);
+        }, indexKey.timeCode);
     });
-    // setTimeout(() => {
-        
-    //     keyPlay.classList.remove('playing');
-    // }, soundsRecording.length);
-    
-    
-    
 };
 
 

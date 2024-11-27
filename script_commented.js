@@ -3,7 +3,7 @@ document.addEventListener('keyup', handleStopAudioAndAnimation);
 
 let recording = false;
 let soundsRecording = [];
-let times = []; // date de maintenant = quantité de ms depuis 1er janvier 1070 et donc possibilité de prendre écart de ms entre deux prises
+let times = []; // date de maintenant = quantité de ms depuis 1er janvier 1970 et donc possibilité de prendre écart de ms entre deux prises
 
 function handleDrumPlay(event) {
 
@@ -30,6 +30,9 @@ function handleDrumPlay(event) {
 
         if (event.keyCode === 32) { // si pas audio et si touche espace
             triggerPlay();
+            setTimeout(() => { // lance un délai pour toggle la classe css qui gere l'animation des touches
+                keyWhich.classList.toggle('playing');
+            }, Date.now() - startTime);
         }
 
         return;
@@ -87,12 +90,12 @@ function triggerPlay() {
             const emulNewKeyDownEvent = new KeyboardEvent("keydown", { keyCode: indexKey.keyCode });
             // ici tout le code js se declenche via deux evenements un keydown et keyup = prog. evenentielle et il est possible de faire aussi un evenement directement via le code = simulateur d'évenement
             // ici, on simule un keyboardEvent
-            document.dispatchEvent(emulNewKeyBoardEvent); // maintenant qu'évènement créer il faut qu'il se produise pour que l'écouteur sur le document le récup.
+            document.dispatchEvent(emulNewKeyBoardEvent); // maintenant qu'évènement créer il faut qu'il se produise pour que l'écouteur d'evenement sur le document le récup.
             setTimeout(() => { // pareil pour key up, pour que les touches se relevent une fois jouées
                 const emulNewKeyUpEvent = new KeyboardEvent("keyup", { keyCode: indexKey.keyCode });
                 document.dispatchEvent(emulNewKeyUpEvent);
             }, 2000);
-        });
+        }, indexKey.timeCode);
 
     });
 };
