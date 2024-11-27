@@ -3,7 +3,7 @@ document.addEventListener('keyup', handleStopAudioAndAnimation);
 
 let recording = false;
 let soundsRecording = [];
-let times = [];
+let times = []; // date de maintenant = quantité de ms depuis 1er janvier 1070 et donc possibilité de prendre écart de ms entre deux prises
 
 function handleDrumPlay(event) {
 
@@ -61,21 +61,40 @@ function handleStopAudioAndAnimation(event) {
 
 function triggerRecord(event) { //fonction pour enregistrer
 
-    if (event.keyCode === 82 && Recording === false) { // si evenement declenche div 82 et si ma variable est égale a sa valeur initiale 
-        Recording = true; // alors la variable prend la valeur true
+    if (event.keyCode === 82 && recording === false) { // si evenement declenche div 82 et si ma variable est égale a sa valeur initiale 
+        recording = true; // alors la variable prend la valeur true et donc actionne focntion enregistrement
+        soundsRecording = []; // il faut reinitailiser le tableau quand on rappuie pour reengitrer pas a la fin de l'enregistrement sinon plus rien a ecouter 
+        startTime = Date.now(); // création variable qui donne le temps t de départ
     }
 
     else {
-        Recording = false; // ou alors la variable prend la valeur false
+        recording = false; // ou alors la variable prend la valeur false
     };
 
 };
 
-function record(event) { // fonctionne qui enregistre en poussant dans un tableau
-    soundsRecording.push(event.keyCode);
+function record(event) { // fonction qui enregistre en poussant dans un tableau que si tout est verifier avant donc ne rajoute pas la lettre R dans ce tableau
+    //on enregistre la touche mais aussi à quel moment
+    soundsRecording.push({ // transformer mon tableau en objet car permet de mettre touche/son et date;
+        keyCode: event.keyCode,
+        timeCode: Date.now() - startTime, // t enregistrement = t actuel - t de départ
+    });
 };
 
 function triggerPlay() {
+    soundsRecording.forEach((indexKey) => { // un forEach pour parcourir tableau et récup chaque keyCode
+        setTimeout(() => { // fonction timeout qui déclenche tout les n ms données
+            const emulNewKeyDownEvent = new KeyboardEvent("keydown", { keyCode: indexKey.keyCode });
+            // ici tout le code js se declenche via deux evenements un keydown et keyup = prog. evenentielle et il est possible de faire aussi un evenement directement via le code = simulateur d'évenement
+            // ici, on simule un keyboardEvent
+            document.dispatchEvent(emulNewKeyBoardEvent); // maintenant qu'évènement créer il faut qu'il se produise pour que l'écouteur sur le document le récup.
+            setTimeout(() => { // pareil pour key up, pour que les touches se relevent une fois jouées
+                const emulNewKeyUpEvent = new KeyboardEvent("keyup", { keyCode: indexKey.keyCode });
+                document.dispatchEvent(emulNewKeyUpEvent);
+            }, 2000);
+        });
+
+    });
 };
 
 

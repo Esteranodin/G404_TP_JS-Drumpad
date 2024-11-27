@@ -1,6 +1,4 @@
-timeline avec temps qui passe +
-timeline des evenmenent
-enregistrer les deux
+
 
 ==> les events et quand ça se produit
 
@@ -11,3 +9,9 @@ tableau des objets ou dedans chaque objet à un temps
 
 
 Mettre sous play et record en span les images correspondantes
+
+
+création moule (classe objet) qu'on remplit avec classe prommesse (qui contient les infos deja préparé en amont) comme pate a gateau 
+==> new verre = new sable
+
+Pour play ==> creation d'un intervalle pour lancer evenement et d'un evenement key up

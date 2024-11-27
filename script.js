@@ -3,7 +3,8 @@ document.addEventListener('keyup', handleStopAudioAndAnimation);
 
 let recording = false;
 let soundsRecording = [];
-let times = [];
+let startTime;
+let keyPlay = document.querySelector('#play');
 
 function handleDrumPlay(event) {
     if (event.repeat) return;
@@ -22,10 +23,10 @@ function handleDrumPlay(event) {
             triggerRecord(event);
         };
 
-        
-        // if(event.keyCode === 32){ 
-        //     triggerPlay();
-        // }
+
+        if (event.keyCode === 32) {
+            triggerPlay();
+        };
 
         return;
     };
@@ -50,12 +51,14 @@ function handleStopAudioAndAnimation(event) {
 
     if (keySelect && keyWhichAudio) {
         keySelect.classList.toggle('playing');
-    }
+    };
 };
 
 function triggerRecord(event) {
     if (event.keyCode === 82 && recording === false) {
         recording = true;
+        soundsRecording = [];
+        startTime = Date.now();
     }
     else {
         recording = false;
@@ -63,14 +66,30 @@ function triggerRecord(event) {
 };
 
 function record(event) {
-            soundsRecording.push(event.keyCode);
-            console.log(soundsRecording);
-            
+    soundsRecording.push({
+        keyCode: event.keyCode,
+        timeCode: Date.now() - startTime,
+    });
 };
 
-
-// function triggerPlay(){
-
-// };
+function triggerPlay() {
+    soundsRecording.forEach((indexKey) => {
+        setTimeout(() => {
+            const emulNewKeyDownEvent = new KeyboardEvent("keydown", { keyCode: indexKey.keyCode});
+            document.dispatchEvent(emulNewKeyDownEvent);
+           setTimeout(() => {
+            const emulNewKeyUpEvent = new KeyboardEvent("keyup", {keyCode: indexKey.keyCode});
+            document.dispatchEvent(emulNewKeyUpEvent);
+        }, 200); 
+    }, indexKey.timeCode);       
+    });
+    // setTimeout(() => {
+        
+    //     keyPlay.classList.remove('playing');
+    // }, soundsRecording.length);
+    
+    
+    
+};
 
 
