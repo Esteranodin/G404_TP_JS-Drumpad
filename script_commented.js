@@ -90,7 +90,7 @@ function triggerPlay() {
             const emulNewKeyDownEvent = new KeyboardEvent("keydown", { keyCode: indexKey.keyCode });
             // ici tout le code js se declenche via deux evenements un keydown et keyup = prog. evenentielle et il est possible de faire aussi un evenement directement via le code = simulateur d'évenement
             // ici, on simule un keyboardEvent
-            document.dispatchEvent(emulNewKeyBoardEvent); // maintenant qu'évènement créer il faut qu'il se produise pour que l'écouteur d'evenement sur le document le récup.
+            document.dispatchEvent(emulNewKeyBoardEvent); // maintenant qu'évènement créer il faut qu'il se produise pour que l'écouteur d'evenement sur le document le récup. Faire attention de bien le faire au bon endroit, ici event sur document
             setTimeout(() => { // pareil pour key up, pour que les touches se relevent une fois jouées
                 const emulNewKeyUpEvent = new KeyboardEvent("keyup", { keyCode: indexKey.keyCode });
                 document.dispatchEvent(emulNewKeyUpEvent);

@@ -81,7 +81,7 @@ function triggerPlay() {
             setTimeout(() => {
                 const emulNewKeyUpEvent = new KeyboardEvent("keyup", { keyCode: indexKey.keyCode });
                 document.dispatchEvent(emulNewKeyUpEvent);
-            }, 200);
+            }, 300);
         }, indexKey.timeCode);
     });
 };
