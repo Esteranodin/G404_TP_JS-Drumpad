@@ -20,6 +20,7 @@ function handleDrumPlay(event) {
 
         if (event.keyCode === 82) {
             triggerRecord(event);
+            document.getElementById('record').classList.toggle('active');
         };
 
 

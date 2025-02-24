@@ -1,3 +1,4 @@
 TO DO :
-Modifier CSS pour le rendre plus fancy
+
+
 Mettre sous play et record en span les images correspondantes

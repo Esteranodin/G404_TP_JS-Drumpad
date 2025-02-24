@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>DrumPad</title>
+    <link rel="stylesheet" href="style.css">
     <script defer src="./script.js"></script>
 </head>
 
@@ -49,23 +49,23 @@
             <span class="sound">TINK</span>
         </div>
         
-        <div data-key="82" id="record" class="key">
-            <kbd>RECORD</kbd>
-        </div>
-        <div data-key="32" id="play" class="key">
-            <kbd>PLAY</kbd>
+    </div>
+        <div class="controls">
+            <button id="record" aria-label="Enregistrer" data-key="82" id="record" class="key">Record (R)</button>
+            <button id="play" aria-label="Jouer" data-key="32" id="record" class="key">Play (space)</button>
+    </div>
 
-        </div>
-        <!-- Audio source -->
-        <audio data-key="65" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/clap.wav"></audio>
-        <audio data-key="90" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/hihat.wav"></audio>
-        <audio data-key="69" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/kick.wav"></audio>
-        <audio data-key="81" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/openhat.wav"></audio>
-        <audio data-key="83" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/boom.wav"></audio>
-        <audio data-key="68" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/ride.wav"></audio>
-        <audio data-key="87" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/snare.wav"></audio>
-        <audio data-key="88" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/tom.wav"></audio>
-        <audio data-key="67" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/tink.wav"></audio>
+
+    <!-- Audio source -->
+    <audio data-key="65" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/clap.wav"></audio>
+    <audio data-key="90" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/hihat.wav"></audio>
+    <audio data-key="69" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/kick.wav"></audio>
+    <audio data-key="81" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/openhat.wav"></audio>
+    <audio data-key="83" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/boom.wav"></audio>
+    <audio data-key="68" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/ride.wav"></audio>
+    <audio data-key="87" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/snare.wav"></audio>
+    <audio data-key="88" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/tom.wav"></audio>
+    <audio data-key="67" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/tink.wav"></audio>
 
 </body>
 
